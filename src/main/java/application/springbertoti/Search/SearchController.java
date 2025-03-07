@@ -1,20 +1,29 @@
-package application.springbertoti;
+package application.springbertoti.Search;
 
+import application.springbertoti.Search.Model.Search;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.List;
 
 @RestController
 @RequestMapping("/searches")
 
 public class SearchController {
 
+    @Autowired
+    private SearchRepository searchRepository;
+
+
     @GetMapping
-    public ResponseEntity getSearch (){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
+    public List<Search> getAllSearches (){
+        return searchRepository.findAll();
+    }
+    @PostMapping
+    public Search addSearch (@RequestBody Search search){
+        return searchRepository.save(search);
     }
 }
