@@ -7,16 +7,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75,500;1,75,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .add-button {
+            width: 60px;
+            height: 60px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            position: relative;
+            margin: 20px auto;
+        }
+        .card {
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .card-buttons button {
+            margin: 5px;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-
 
 <div class="navbar">
     <a href="#">Home</a>
     <a href="#">Saved</a>
     <a href="#">About Us</a>
 </div>
-
 
 <header class="roboto-font">
     <img src="../static/images/logo.png" alt="logo with background" class="logo"/>
@@ -28,24 +56,14 @@
     </div>
 </header>
 
-
 <div class="catalog-container">
-    <div class="card">
-        <h3>Special Theory of Relativity</h3>
-        <p>A physical theory by Albert Einstein (1905) that revolutionized the concepts of space and time, introducing the constancy of the speed of light and the relativity of simultaneity.</p>
-        <p>Theoretical Physics</p>
-        <a href="#">View Details</a>
-    </div>
-    <div class="card">
-        <h3>Newton's Law of Universal Gravitation</h3>
-        <p>Isaac Newton's (1687) law stating that every mass attracts every other mass with a force proportional to their masses and inversely proportional to the square of their distance.</p>
-        <p>Classical Mechanics</p>
-        <a href="#">View Details</a>
-    </div>
-
-    </div>
 
 </div>
 
+<button class="add-button">
+    <i class="fas fa-plus"></i>
+</button>
+
+<script src="/static/script.js"></script>
 </body>
 </html>

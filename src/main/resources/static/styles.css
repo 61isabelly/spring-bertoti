@@ -75,7 +75,6 @@ header {
     color: white;
 }
 
-
 .navbar {
     width: 100%;
     background-color: #000000;
@@ -102,12 +101,10 @@ header {
     color: white;
 }
 
-
 header {
     margin-top: 60px;
 }
 
-/* Contêiner para os cards */
 .catalog-container {
     display: flex;
     flex-wrap: wrap;
@@ -116,7 +113,6 @@ header {
     margin: 50px auto;
     width: 90%;
 }
-
 
 .card {
     width: 280px;
@@ -138,33 +134,47 @@ header {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-
 .card h3 {
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 15px;
 }
 
-
 .card p {
     font-size: 14px;
     color: #bbb;
 }
 
+.card-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
 
-.card a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: white;
-    color: #000;
-    text-decoration: none;
+.edit-button, .delete-button {
+    padding: 8px 15px;
+    border: none;
     border-radius: 5px;
+    font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.card a:hover {
-    background-color: white
-;
+.edit-button {
+    background-color: white;
+    color: black;
 }
 
+.edit-button:hover {
+    background-color: #388E3C;
+}
+
+.delete-button {
+    background-color: white;
+    color: black;
+}
+
+.delete-button:hover {
+    background-color: #C62828;
+}
