@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const apiUrl = "http://localhost:8080/searches";
 
-
     function fetchSearches() {
         fetch(apiUrl)
             .then(response => response.json())
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error("Error fetching data:", error));
     }
 
-
     function createCard(search) {
         const card = document.createElement("div");
         card.classList.add("card");
@@ -31,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button class="delete-button" data-id="${search.id}"><i class="fas fa-trash"></i> Delete</button>
             </div>
         `;
-
 
         card.querySelector(".edit-button").addEventListener("click", function () {
             const id = this.dataset.id;
@@ -48,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
             updateSearch(id, updatedSearch);
         });
 
-
         card.querySelector(".delete-button").addEventListener("click", function () {
             const id = this.dataset.id;
             deleteSearch(id);
@@ -56,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return card;
     }
-
 
     function deleteSearch(id) {
         fetch(`${apiUrl}/${id}`, {
@@ -66,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error("Error deleting search:", error));
     }
 
-
     function updateSearch(id, updatedSearch) {
         fetch(`${apiUrl}/${id}`, {
             method: "PUT",
@@ -75,14 +69,13 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: JSON.stringify(updatedSearch)
         })
-            .then(() => fetchSearches())  //
+            .then(() => fetchSearches())
             .catch(error => console.error("Error updating search:", error));
     }
 
-    // Add a new search entry
     document.querySelector(".add-button").addEventListener("click", function () {
         const newSearch = {
-            name: "New Search",  //
+            name: "New Search",
             description: "Description of the new search",
             category: "Category of the search"
         };
@@ -94,10 +87,25 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: JSON.stringify(newSearch)
         })
-            .then(() => fetchSearches())  //
+            .then(() => fetchSearches())
             .catch(error => console.error("Error adding search:", error));
     });
 
-
     fetchSearches();
+
+    // Funcionalidade de busca
+    const searchInput = document.querySelector(".search_input");
+    searchInput.addEventListener("input", function () {
+        const query = this.value.toLowerCase();
+        const cards = document.querySelectorAll(".card");
+
+        cards.forEach(card => {
+            const name = card.querySelector("h3").textContent.toLowerCase();
+            const description = card.querySelector("p:nth-of-type(1)").textContent.toLowerCase();
+            const category = card.querySelector("p:nth-of-type(2)").textContent.toLowerCase();
+
+            const matches = name.includes(query) || description.includes(query) || category.includes(query);
+            card.style.display = matches ? "block" : "none";
+        });
+    });
 });
